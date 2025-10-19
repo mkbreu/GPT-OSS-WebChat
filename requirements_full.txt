@@ -77,6 +77,10 @@ h11==0.14.0
 urllib3==2.2.3
 certifi==2024.8.30
 
+=== Aceleração opcional (TensorFlow) ===
+
+transformers==4.44.2 # Interface para carregar modelos compatíveis com TensorFlow
+
 ============================================================
 📌 NOTAS FINAIS
 ============================================================

@@ -3,25 +3,33 @@
 
 import json
 from pathlib import Path
+
 import requests
 import streamlit as st
+
 from src.utils.file_reader import (
-    read_csv_file, read_excel_file, read_txt_file, read_docx_file,
-    read_pdf_file, read_pptx_file, read_image_file,
+    read_csv_file,
+    read_excel_file,
+    read_txt_file,
+    read_docx_file,
+    read_pdf_file,
+    read_pptx_file,
+    read_image_file,
 )
+from src.utils.tensorflow_chat import generate_with_tensorflow
 
 def _append_message(history, role, content):
     history.append({"role": role, "content": content})
 
 def _truncate_to_fit(prompt: str, max_tokens: int, history: list[dict]) -> tuple[str, bool]:
-        tokens = prompt.split()
-        if len(tokens) <= max_tokens:
-            return prompt, False
-        trunc_tokens = len(" ".join(m["content"] for m in history[-5:]).split())
-        if trunc_tokens > max_tokens:
-            return prompt, True
-        new_prompt = " ".join(m["content"] for m in history[-5:]).replace("\n", " ")
-        return new_prompt, False
+    tokens = prompt.split()
+    if len(tokens) <= max_tokens:
+        return prompt, False
+    trunc_tokens = len(" ".join(m["content"] for m in history[-5:]).split())
+    if trunc_tokens > max_tokens:
+        return prompt, True
+    new_prompt = " ".join(m["content"] for m in history[-5:]).replace("\n", " ")
+    return new_prompt, False
 
 def _build_prompt(history: list[dict], context_size: int) -> tuple[str, bool]:
     prompt_parts = []
@@ -66,7 +74,7 @@ def _build_prompt(history: list[dict], context_size: int) -> tuple[str, bool]:
         return truncated_prompt, exceeded
     return full_prompt, False
 
-def generate_response(prompt: str, model: str, temperature: float = 1.0) -> str:
+def generate_ollama_response(prompt: str, model: str, temperature: float = 1.0) -> str:
     url = "http://localhost:11434/api/generate"
     payload = {"model": model, "prompt": prompt, "options": {"temperature": temperature}}
     try:
@@ -124,7 +132,26 @@ def show_chat() -> None:
             st.warning("⚠️ Contexto muito grande. Reduza a conversa ou aumente o limite.")
 
         with st.spinner("Gerando resposta..."):
-            answer = generate_response(prompt, st.session_state.get("model_choice"), st.session_state.get("temperature", 1.3))
+            backend = st.session_state.get("backend", "Ollama (HTTP)")
+            temperature = st.session_state.get("temperature", 1.3)
+            if backend == "TensorFlow (local)":
+                model_name = st.session_state.get("tf_model_name") or "gpt2"
+                max_new_tokens = int(st.session_state.get("tf_max_new_tokens", 256))
+                if not model_name.strip():
+                    answer = "*Defina um modelo TensorFlow válido na barra lateral.*"
+                else:
+                    answer = generate_with_tensorflow(
+                        prompt,
+                        model_name=model_name.strip(),
+                        temperature=temperature,
+                        max_new_tokens=max_new_tokens,
+                    )
+            else:
+                answer = generate_ollama_response(
+                    prompt,
+                    st.session_state.get("model_choice"),
+                    temperature,
+                )
 
         _append_message(history, "assistant", answer)
 
