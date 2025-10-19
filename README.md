@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+[README.md](https://github.com/user-attachments/files/22987086/README.md)
+>>>>>>> b503b81344751111860e8b2535fcf26ada689ed0
 # GPT-OSS-WebChat
 
 A simple and extensible web-based AI chat application built with **Streamlit** and designed for **modularity**, allowing future expansion with additional components such as custom sidebars, chat history, multiple model providers, and more.
