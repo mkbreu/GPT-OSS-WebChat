@@ -1,15 +1,3 @@
-Showtime. Segue o **README.md** revisado — pronto pra copiar e colar — com:
-
-* instruções claras para instalar/rodar no **Windows**,
-* **recomendação forte** de salvar em **Documentos**,
-* como **ativar embeddings** no Ollama (`nomic-embed-text`) e usar GPU,
-* passos no **VS Code** e **PowerShell**,
-* comandos de **Git** no final.
-
-O conteúdo abaixo substitui o arquivo atual por completo. Baseei na sua versão existente e mantive a estrutura/recursos já implementados. 
-
----
-
 # GPT-OSS-WebChat
 
 Aplicação web em **Streamlit** para conversar com **modelos locais** via **Ollama**, com suporte à **GPU (TensorFlow + CUDA + cuDNN)**, leitura de anexos e RAG-lite. Mantém histórico (TXT/DOCX), controla tamanho de contexto e roda 100% offline.
