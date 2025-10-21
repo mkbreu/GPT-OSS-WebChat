@@ -1,56 +1,46 @@
-============================================================
-🧠 PROJETO: GPT-OSS WebChat
-Ambiente: Python 3.13.x
-============================================================
-Inclui:
-- Framework principal (Streamlit + Ollama)
-- Manipulação de dados, planilhas, docs e imagens
-- Visualizações (Altair + Matplotlib + Rich)
-- Banco de dados local via SQLAlchemy
-============================================================
-=== Framework principal ===
+# ============================================================
+# 🧠 PROJETO: GPT-OSS WebChat
+# Compatível: Python 3.10.x ou 3.11.x (Windows/Linux)
+# ============================================================
 
-streamlit==1.37.0 # Framework web interativo (frontend em Python)
+# === Framework principal ===
+streamlit==1.37.0
+tensorflow==2.10.1
+protobuf==3.19.6
 
-=== API / Cliente Ollama ===
+# === API / Cliente Ollama ===
+requests==2.32.3
+ollama==0.3.0
 
-requests==2.32.3 # Chamadas HTTP
-ollama==0.3.0 # Cliente Python p/ modelos locais (Ollama)
+# === Manipulação de dados e planilhas ===
+pandas==1.5.3
+numpy==1.26.4
+openpyxl==3.1.5
+xlsxwriter==3.2.9
 
-=== Manipulação de dados e planilhas ===
+# === Documentos e arquivos ===
+python-docx==1.2.0
+pdfplumber==0.11.7
+PyPDF2==3.0.1
+python-pptx==1.0.2
+pillow==10.4.0
+lxml==5.3.0
+et_xmlfile==2.0.0
+pypdfium2==4.30.0
 
-pandas==2.2.3 # Estruturas de dados e leitura de planilhas
-numpy==1.26.4 # Operações numéricas de base
-openpyxl==3.1.5 # Leitura e escrita de planilhas .xlsx
-xlsxwriter==3.2.9 # Escrita avançada de planilhas Excel
-
-=== Documentos e arquivos ===
-
-python-docx==1.2.0 # Leitura e criação de arquivos Word (.docx)
-pdfplumber==0.11.7 # Extração de texto e imagens de PDFs
-PyPDF2==3.0.1 # Manipulação e mesclagem de PDFs
-python-pptx==1.0.2 # Leitura/criação de apresentações PowerPoint
-pillow==10.4.0 # Manipulação de imagens (compatível com Streamlit 1.37)
-lxml==5.3.0 # Parser XML rápido (suporte interno a docx/pptx/pdf)
-et_xmlfile==2.0.0 # Dependência do openpyxl
-pypdfium2==4.30.0 # Backend PDF opcional p/ pdfplumber
-
-=== Validação, schema e tipagem ===
-
+# === Validação, schema e tipagem ===
 attrs==24.2.0
 typing_extensions==4.12.2
 jsonschema==4.25.0
 jsonschema-specifications==2024.10.1
-referencing==0.37.0
-rpds-py==0.27.0
+referencing==0.32.0
+rpds-py==0.13.2
 validators==0.35.0
 
-=== Visualização e interface ===
-
-altair==5.3.0 # Gráficos declarativos (nativo no Streamlit)
-pydeck==0.9.1 # Mapas 3D interativos
-matplotlib==3.9.2 # Visualizações adicionais (opcional)
-protobuf==4.25.5
+# === Visualização e interface ===
+altair==4.2.2
+pydeck==0.9.1
+matplotlib==3.9.2
 blinker==1.9.0
 watchdog==4.0.1
 tornado==6.4.1
@@ -63,27 +53,29 @@ mdurl==0.1.2
 toml==0.10.2
 Jinja2==3.1.4
 MarkupSafe==3.0.2
-tabulate==0.9.0 # Exibir tabelas formatadas (console ou Streamlit)
+tabulate==0.9.0
 
-=== Banco de dados local ===
+# === Banco de dados local ===
+sqlalchemy==2.0.35
 
-sqlalchemy==2.0.35 # ORM p/ persistir logs e históricos locais
-
-=== Rede e segurança ===
-
+# === Rede e segurança ===
 httpx==0.27.0
 httpcore==1.0.5
 h11==0.14.0
 urllib3==2.2.3
 certifi==2024.8.30
 
-============================================================
-📌 NOTAS FINAIS
-============================================================
-- Compatível com Python 3.13.5 (Windows)
-- Todos os pacotes testados e instaláveis sem conflitos
-- Pronto para:
-• Renderizar gráficos (Altair + Matplotlib)
-• Exibir tabelas (Pandas + Tabulate)
-• Gravar logs locais (SQLAlchemy)
-============================================================
+# ============================================================
+# 📌 NOTAS FINAIS
+# ============================================================
+# - Ambiente testado: Python 3.10.14 (Windows)
+# - Compatível com CUDA 11.2 e cuDNN 8.1 p/ aceleração TensorFlow
+# - Todos os pacotes instaláveis sem conflito de dependência
+# - Pronto para:
+#   • Renderizar gráficos (Altair + Matplotlib)
+#   • Gerar planilhas e relatórios (Pandas + Openpyxl + XlsxWriter)
+#   • Manipular documentos e PDFs (docx, pptx, pdfplumber)
+#   • Servir interface web (Streamlit)
+#   • Usar modelos locais via Ollama
+#   • Persistir histórico e logs (SQLAlchemy)
+# ============================================================
