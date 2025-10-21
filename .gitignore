@@ -1,157 +1,39 @@
-# =========================
-# AMBIENTES VIRTUAIS
-# =========================
+# Python / venv
 venv/
-venv-tf/
-.venv/
-env/
+venv-*/
 .env/
-
-# pyenv / versão do Python por dev
-.python-version
-
-# =========================
-# PYTHON CACHE/BUILD
-# =========================
+.env.*/
+.venv/
+.venv-*/
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
-
-# Distribuições / builds
-build/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
-*.egg
 
-# PyInstaller
-*.manifest
-*.spec
+# Streamlit
+.streamlit/
+**/.streamlit/
+# cache temporário
+**/.cache/
 
-# Cython
-*.c
-*.cpp
-*.so
-*.pyd
+# Ollama / modelos locais (se existirem)
+*.bin
+*.gguf
+*.safetensors
 
-# =========================
-# GERENCIADORES / DEPENDÊNCIAS
-# =========================
-# Pipenv (normalmente mantém os arquivos de lock no repo; ajuste se necessário)
-# Pipfile.lock
+# Dados gerados pela app
+conversations/exports/
+conversations/*.json
 
-# Poetry
-# poetry.lock
-
-# Conda
-conda-meta/
-conda-bld/
-
-# =========================
-# LOGS / TEMPORÁRIOS
-# =========================
-*.log
-logs/
-tmp/
-temp/
-*.tmp
-
-# =========================
-# FERRAMENTAS DE TESTE / QUALITY
-# =========================
-# pytest
-.pytest_cache/
-
-# coverage
-.coverage
-.coverage.*
-htmlcov/
-coverage.xml
-
-# mypy / pyright / ruff / pylint
-.mypy_cache/
-.pyright/
-.ruff_cache/
-dmypy.json
-.pyre/
-pylint-report.txt
-
-# tox
-.tox/
-.nox/
-
-# hypothesis
-.hypothesis/
-
-# =========================
-# NOTEBOOKS
-# =========================
-.ipynb_checkpoints/
-.profile_default/
-.ipython/
-
-# =========================
-# IDEs / EDITORES
-# =========================
-# VS Code
+# IDE/Editor
 .vscode/
-
-# JetBrains
 .idea/
+*.code-workspace
 
-# Sublime / outros
-*.sublime-workspace
-*.sublime-project
-
-# =========================
-# SISTEMA OPERACIONAL
-# =========================
-# macOS
+# SO
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Windows
 Thumbs.db
-ehthumbs.db
-Desktop.ini
 
-# Linux
-*~
-
-# =========================
-# VARIADOS / SEGREDOS
-# =========================
-.env
-.env.*
-*.env
-*.env.*
-*.secret
-secrets/
-*.key
-*.pem
-
-# =========================
-# FRONTEND (se houver)
-# =========================
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# =========================
-# DOCS / BUILD DE DOCS
-# =========================
-site/
-docs/_build/
+# Logs
+*.log
